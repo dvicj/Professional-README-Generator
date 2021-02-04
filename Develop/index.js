@@ -84,7 +84,10 @@ const promptUserHeader = () => {
     ])
 }; 
 
-const promptUserBody = () => {
+const promptUserBody = markdownData => {
+    if (!markdownData.features) {
+        markdownData.features = []; 
+    }
     return inquirer
     .prompt([
         { 
@@ -93,7 +96,6 @@ const promptUserBody = () => {
             message: "What does the user need to install your project?(Required)",
             validate: installationInput => {
                 if (installationInput) {
-                    console.log("Thank you!");
                     return true; 
                     
                 } else {
@@ -108,7 +110,6 @@ const promptUserBody = () => {
             message: "What are the steps required to install your project?(Required)",
             validate: stepsInput => {
                 if (stepsInput) {
-                    console.log("Thank you!");
                     return true; 
                     
                 } else {
@@ -124,7 +125,6 @@ const promptUserBody = () => {
             message: "What is the usage for this project?(Required)",
             validate: usageInput => {
                 if (usageInput) {
-                    console.log("Thank you!");
                     return true; 
                     
                 } else {
@@ -139,7 +139,6 @@ const promptUserBody = () => {
             message: "What are the features of your project?(Required)",
             validate: featuresInput => {
                 if (featuresInput) {
-                    console.log("Thank you!");
                     return true; 
                     
                 } else {
@@ -161,7 +160,6 @@ const promptUserBody = () => {
             when: ({confirmFeatures}) => confirmFeatures, 
             validate: moreFeatures => {
                 if (moreFeatures) {
-                    console.log("Thank you!");
                     return true; 
                     
                 } else {
@@ -183,7 +181,6 @@ const promptUserBody = () => {
             when: ({confirmCollaborators}) => confirmCollaborators, 
             validate: collaborators => {
                 if (collaborators) {
-                    console.log("Thank you!");
                     return true; 
                     
                 } else {
@@ -205,7 +202,6 @@ const promptUserBody = () => {
             when: ({confirmCredits}) => confirmCredits, 
             validate: credits => {
                 if (credits) {
-                    console.log("Thank you!");
                     return true; 
                     
                 } else {
@@ -227,7 +223,6 @@ const promptUserBody = () => {
             when: ({confirmIssues}) => confirmIssues, 
             validate: issues => {
                 if (issues) {
-                    console.log("Thank you!");
                     return true; 
                     
                 } else {
@@ -243,7 +238,6 @@ const promptUserBody = () => {
             choices: ['Apache License 2.0', 'GNU General Public License', 'MIT License', 'Mozilla Public License 2.0', 'Common Development and Distribution License', 'Eclips Public License version 2.0'],
             validate: license => {
                 if (license) {
-                    console.log("Thank you!");
                     return true; 
                     
                 } else {
@@ -258,7 +252,6 @@ const promptUserBody = () => {
             message: "What is your GitHub username?(Required)",
             validate: github => {
                 if (github) {
-                    console.log("Thank you!");
                     return true; 
                     
                 } else {
@@ -273,7 +266,6 @@ const promptUserBody = () => {
             message: "What is your email?(Required)",
             validate: email => {
                 if (email) {
-                    console.log("Thank you!");
                     return true; 
                     
                 } else {
@@ -282,8 +274,15 @@ const promptUserBody = () => {
                 }
             }
         }
-    ])
-}; 
+    ]).then(inputData =>
+        markdownData.input.push(inputData));
+        if (markdownData.confirmFeatures) {
+            return promptUserBody(markdownData);
+        } else {
+            return markdownData; 
+        }
+    }; 
+
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
@@ -293,3 +292,15 @@ function init() {}
 
 // Function call to initialize app
 init();
+
+promptUserHeader() 
+    .then(promptUserBody)
+    .then(markdownData => {
+        return generateMarkdown(markdownData);
+    })
+    .then(pageMarkdown => {
+        return writeToFile(pageMarkdown);
+    })
+    .catch(err => {
+        console.log(err)
+    }); 
