@@ -1,43 +1,75 @@
 
-    # PokeParte
+# PokeParte
+
+Hello and thank you for taking the time to check out this README! Please read the below for an in
+depth look at this project. 
+
+Table of Contents: 
+
+* [Description](#description)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Features](#features)
+* [Issues](#issues)
+* [Collaborators](#collaborators)
+* [Credits](#credits)
+* [Questions](#questions)
+* [License](#license)
+
 ## Description: 
+
 Motivation: 
 
-    kjDkjdksjf
+    I like Pokemon and wanted to use the Pokemon API.
 
-Languages used:
+Languages used: 
 
-    JavaScript, HTML, CSS, ES6, jQuery, Bootstrap, Node, Other
+    JavaScript, HTML, CSS, jQuery, Other
 
 Link to deployed application:
 
-    dvicj.github.io
+[damn-ma-6.github.io/Poke-Parte](damn-ma-6.github.io/Poke-Parte)
   
 ## Installation: 
 
-    a web browser
-    
-    Steps to install this project: 
-    open index.html in a web browser
+Needed for installation: 
+
+    A web browser, we used Chrome.
+
+Steps to install this project: 
+
+    Open index.html in a web browser.
   
 ## Usage:
-    i dont kno
+
+    To get a roster of Pokemon based on weather conditions.
   
 ## Features: 
-    search for city, get weather and 10 pokemon
-  
-    
-    ##Issues
-    undefined
-    
-    
-    
-  
-## Questions
-    dvicj
-    devinvjones@gmail.com
 
-    
-    
+    When the user searches their city, they will get a roster of 10 Pokemon based on weather conditions.
+
+## Issues: 
+  
+    Lack of communication. 
+
+## Collaborators: 
+
+    cruzma, neeko, mallory.faria, ataghva
+
+## Credits:
+
+    Accuweather, PokeAPI, tailwind.css, jQuery, vanillatilt.js
+  
+## Questions:
+
+[dvicj](www.github.com/dvicj)
+
+[devinvjones@gmail.com](mailto:devinvjones@gmail.com)
+
+## License: 
+
+![license image](https://img.shields.io/static/v1?label=license&message=MIT&color=lightgrey)
+
+[MIT](opensource.org/license/MIT)
 
 2021 by dvicj

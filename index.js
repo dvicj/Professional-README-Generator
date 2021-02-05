@@ -140,7 +140,7 @@ const promptUser = () => {
             type: "checkbox",
             name: "license",
             message: "Please choose a license.(Required)",
-            choices: ['Apache License 2.0', 'GNU General Public License', 'MIT License', 'Mozilla Public License 2.0', 'Common Development and Distribution License', 'Eclips Public License version 2.0'],
+            choices: ['Apache-2.0', 'MIT', 'MPL-2.0', 'CDDL-1.0', 'EPL-2.0'],
             validate: license => {
                 if (license) {
                     return true; 
